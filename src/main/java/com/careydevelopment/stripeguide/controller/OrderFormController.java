@@ -26,6 +26,7 @@ public class OrderFormController {
 
     @Value("${stripe.secret.key}") 
     private String stripeSecretKey;
+ 
     
     @GetMapping("/orderForm")
     public String orderForm(Model model) {
@@ -41,6 +42,7 @@ public class OrderFormController {
         Stripe.apiKey = stripeSecretKey;
 
         Long totalAmount = OrderUtil.calculateOrderAmountInCents(order);
+        model.addAttribute("totalAmount", totalAmount);
         
         try {
             PaymentIntentCreateParams createParams = new PaymentIntentCreateParams.Builder()
