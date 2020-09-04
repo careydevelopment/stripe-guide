@@ -1,11 +1,16 @@
 package com.careydevelopment.stripeguide.model;
 
+import java.math.BigDecimal;
+
 import org.javamoney.moneta.Money;
+
+import com.careydevelopment.stripeguide.util.CurrencyUtil;
 
 public class Product {
 
     private String name;
     private Money price;
+    private BigDecimal priceValue;
     
     
     public String getName() {
@@ -15,11 +20,12 @@ public class Product {
         this.name = name;
     }
     public Money getPrice() {
-        return price;
+        return Money.of(priceValue, CurrencyUtil.USD);
     }
-    public void setPrice(Money price) {
-        this.price = price;
+    public BigDecimal getPriceValue() {
+        return priceValue;
     }
-    
-    
+    public void setPriceValue(BigDecimal priceValue) {
+        this.priceValue = priceValue;
+    }
 }

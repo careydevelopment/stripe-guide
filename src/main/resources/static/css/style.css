@@ -6,11 +6,8 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  height: 100vh;
-  width: 100vw;
+  
+  margin-left:20px;
 }
 form {
   width: 30vw;
@@ -20,6 +17,9 @@ form {
     0px 2px 5px 0px rgba(50, 50, 93, 0.1), 0px 1px 1.5px 0px rgba(0, 0, 0, 0.07);
   border-radius: 7px;
   padding: 40px;
+}
+h1 {
+  margin-bottom:20px;
 }
 input {
   border-radius: 6px;
@@ -31,6 +31,26 @@ input {
   width: 100%;
   background: white;
 }
+
+input.quantity {
+  width: 60px;
+}
+
+.line-item {
+  width: 100%;
+  text-align: left;
+}
+
+.product-name {
+  width: 300px;
+  display: inline-block;
+}
+
+.product-quantity {
+  width: 100px;
+  display: inline-block;
+}
+
 .result-message {
   line-height: 22px;
   font-size: 16px;

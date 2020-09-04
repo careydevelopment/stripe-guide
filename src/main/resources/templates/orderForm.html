@@ -7,17 +7,16 @@
 
 <body>
     <h1>Order Form</h1>
-    <form id="payment-form">
-      <div id="card-element"><!--Stripe.js injects the Card Element--></div>
-      <button id="submit">
-        <div class="spinner hidden" id="spinner"></div>
-        <span id="button-text">Pay</span>
-      </button>
-      <p id="card-error" role="alert"></p>
-      <p class="result-message hidden">
-        Payment succeeded, see the result in your
-        <a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay again.
-      </p>
+    <form id="orderForm" th:action="@{/orderForm}" th:object="${order}" method="POST">
+        <div class="line-item" th:each="lineItem, lineItemStatus : *{lineItems}">
+            <input type="hidden" th:field="*{lineItems[__${lineItemStatus.index}__].product.name}"/>
+            <input type="hidden" th:field="*{lineItems[__${lineItemStatus.index}__].product.priceValue}"/>
+            <div class="product-name" th:text="${lineItem.product.name} + ' @ $' + ${lineItem.product.priceValue}"></div>
+            <div class="product-quantity"><input class="quantity" type="number" min="0" max="5" value="0" th:field="*{lineItems[__${lineItemStatus.index}__].quantity}"/></div>
+        </div>
+        <div>
+            <button type="submit">Check Out</button>
+        </div>
     </form>
 </body>
 </html>
