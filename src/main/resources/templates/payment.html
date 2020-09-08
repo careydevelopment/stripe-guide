@@ -15,6 +15,9 @@
 
 <body>
     <h1>Enter Payment Info</h1>
+    <div class="total-amount-section">
+        Total Order Value: $<span th:text="${totalAmount}"></span>
+    </div>
     <form id="payment-form">
       <div id="card-element"><!--Stripe.js injects the Card Element--></div>
       <button id="submit">

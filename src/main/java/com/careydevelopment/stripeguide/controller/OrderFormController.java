@@ -2,6 +2,7 @@ package com.careydevelopment.stripeguide.controller;
 
 import java.math.BigDecimal;
 
+import org.javamoney.moneta.Money;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.careydevelopment.stripeguide.model.CreatePaymentResponse;
 import com.careydevelopment.stripeguide.model.Order;
 import com.careydevelopment.stripeguide.service.OrderFormService;
+import com.careydevelopment.stripeguide.util.CurrencyUtil;
 import com.careydevelopment.stripeguide.util.OrderUtil;
 import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
@@ -42,7 +44,7 @@ public class OrderFormController {
         Stripe.apiKey = stripeSecretKey;
 
         Long totalAmount = OrderUtil.calculateOrderAmountInCents(order);
-        model.addAttribute("totalAmount", totalAmount);
+        model.addAttribute("totalAmount", Money.of(totalAmount, CurrencyUtil.USD).divide(100).getNumberStripped());
         
         try {
             PaymentIntentCreateParams createParams = new PaymentIntentCreateParams.Builder()

@@ -17,6 +17,4 @@ public class LineItem {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-    
-    
 }

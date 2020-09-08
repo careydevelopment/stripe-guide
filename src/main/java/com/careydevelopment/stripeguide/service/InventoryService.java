@@ -25,7 +25,6 @@ public class InventoryService {
         inventory.add(bigMonsterShirt);
         inventory.add(superSquirtGun);
         
-        return inventory;
-        
+        return inventory;       
     }
 }
