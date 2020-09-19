@@ -1,7 +1,5 @@
 package com.careydevelopment.stripeguide.controller;
 
-import java.math.BigDecimal;
-
 import org.javamoney.moneta.Money;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -54,7 +52,7 @@ public class OrderFormController {
             
             PaymentIntent intent = PaymentIntent.create(createParams);
             CreatePaymentResponse paymentResponse = new CreatePaymentResponse(intent.getClientSecret());
-            
+
             model.addAttribute("paymentResponse", paymentResponse);
         } catch (StripeException se) {
             se.printStackTrace();

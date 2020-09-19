@@ -1,10 +1,8 @@
 // A reference to Stripe.js initialized with your real test publishable API key.
-var stripe = Stripe("pk_test_g9vyWYyfGdRUDfeoZSdilfjm008Dtisaqf");
+var stripe = Stripe("[PUBLIC API KEY]");
 
 // Disable the button until we have Stripe set up on the page
 document.querySelector("button").disabled = true;
-
-var elements = stripe.elements();
 
 var style = {
   base: {
@@ -21,6 +19,7 @@ var style = {
   }
 };
 
+var elements = stripe.elements();
 var card = elements.create("card", { style: style });
 
 // Stripe injects an iframe into the DOM
